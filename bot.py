@@ -1,9 +1,11 @@
 from telebot import TeleBot
 from transformers import pipeline
 from flask import Flask, request
+import os
 
 # Инициализация бота и веб-сервера
-bot = TeleBot("7851619872:AAG2LzU_1LkazNs6e11x-z4Qv688VSDKz0w")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+bot = TeleBot(BOT_TOKEN)
 app = Flask(__name__)
 
 # Загружаем модель distilgpt2
@@ -40,5 +42,4 @@ def webhook():
 if __name__ == "__main__":
     # Устанавливаем вебхук для Telegram
     bot.remove_webhook()
-    bot.set_webhook(url='https://telegram-bot.onrender.com/webhook')
-    app.run(host='0.0.0.0', port=5000)
+    bot.set_webhook(url='https://telegram-bot-new-2.onrender.com/webhook')
